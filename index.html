@@ -8,28 +8,63 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
-<title>jquery-toast</title>
-<meta name="keywords" content="jquery-toast" />
-<meta name="description" content="jquery-toast"/>
-<link rel="stylesheet" type="text/css" href="./css/showbox.css">
-<script src="./js/showBox.js"></script>
+<title>jquery-select</title>
+<meta name="keywords" content="jquery-select" />
+<meta name="description" content="jquery-select"/>
 <script src="./js/jquery.min.js"></script>
-<script type="text/javascript">
-
-$(function(){
-		$('#toast').on('click', function(){
-		 	showBox('toastShow');
-		});
-})
-
-</script>
 <style>
+  .div-item {
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .div-item span {
+    width: 20%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .div-item input, .div-item select {
+    display: inline-block;
+    width: 75%;
+    border: none;
+    line-height: 30px;
+    height: 30px;
+    margin: 0;
+    background: #fff;
+    border:0;
+    vertical-align: middle;
+  }
+  select {
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    outline: none;
+    -moz-outline: none;
+    -webkit-outline: none;
+  }
 </style>
 </head>
 <body style="margin: auto;">
-	<button style="width: 100px;height: 100px;" id="toast">toastShow</button>
-	<div class="motify" style="display: none;font-size: 20px;">
-		<div class="motify-inner" style="font-size: 20px;"></div>
-	</div>
+	<div class="div-item">
+        <span>选择项</span> 
+        <select id="select" onchange="selectChange();">
+          <option value="-1">请选择</option>
+          <option value="1">select1</option>
+          <option value="1">select2</option>
+        </select>
+    </div>
 </body>
+<script type="text/javascript">
+	function selectChange(){
+		//select标签选中值
+		var id = $("#select").find("option:selected").val();
+		console.log(id);
+		var selectOptions=$("#select")[0];
+		var option=new Option('name','id');
+		selectOptions.options.add(option);
+		//向select标签中增加一个项
+
+	}
+</script>
 </html>
